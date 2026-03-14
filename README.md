@@ -1,2 +1,3 @@
-# Home - SALSABILAH AMIN EMPIRES LTD
+# Auto detect text files and perform LF normalization
+* text=auto
 
