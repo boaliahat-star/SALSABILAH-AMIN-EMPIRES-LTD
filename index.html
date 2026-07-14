@@ -3,236 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salsabilah Amin Empires Limited | Strategic Vision</title>
-    <link rel="manifest" href="manifest.json">
+    <title>Salsabilah Amin Empires Limited</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            background: linear-gradient(180deg, #060a13 0%, #03050a 100%); 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background: linear-gradient(180deg, #060a13 0%, #020306 100%); 
             color: #ffffff; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 24px 16px;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            padding: 24px 16px; 
         }
-        .kingdom-container { 
-            background: rgba(13, 21, 39, 0.7);
-            border: 1px solid rgba(255, 215, 0, 0.15);
+        .empire-card { 
+            background: rgba(10, 17, 31, 0.75); 
+            border: 1px solid rgba(255, 215, 0, 0.25); 
             border-radius: 28px; 
             padding: 40px 24px; 
-            max-width: 420px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
+            max-width: 410px; 
+            width: 100%; 
+            text-align: center; 
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8); 
+            backdrop-filter: blur(12px); 
         }
-        .app-logo {
-            width: 90px;
-            height: 90px;
-            background: #040811;
-            border: 1px solid #ffd700;
-            border-radius: 24px;
-            margin: 0 auto 24px auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+        .royal-badge { 
+            width: 85px; 
+            height: 85px; 
+            background: #040712; 
+            border: 1px solid #ffd700; 
+            border-radius: 50%; 
+            margin: 0 auto 20px auto; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.15); 
         }
-        .logo-text-top {
-            font-size: 8px;
-            letter-spacing: 1.5px;
-            color: rgba(255, 215, 0, 0.7);
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-        .logo-text-mid {
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            color: #ffffff;
-            line-height: 1.2;
-            margin: 3px 0;
-        }
-        .logo-text-bot {
-            font-size: 8px;
-            letter-spacing: 2px;
-            color: rgba(255, 215, 0, 0.7);
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-        .crown-title {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            color: #ffd700;
-            margin-bottom: 6px;
-            font-weight: 600;
-        }
-        h1 {
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            color: #ffffff;
-            line-height: 1.3;
-            margin-bottom: 8px;
-        }
-        .tagline {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 4px;
-            font-style: italic;
-        }
-        .dedication {
-            font-size: 12px;
-            color: #ffd700;
-            font-weight: 500;
-            margin-bottom: 24px;
-        }
-        .divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
-            margin: 20px 0;
-        }
-        .info-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            padding: 16px;
-            margin: 12px 0;
-            text-align: left;
-            border-left: 3px solid #ffd700;
-        }
-        .info-card h3 {
-            font-size: 14px;
-            color: #ffd700;
-            margin-bottom: 4px;
-            font-weight: 600;
-        }
-        .info-card p {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.4;
-        }
-        .btn-group {
-            margin: 24px 0;
-        }
-        .btn { 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.05); 
-            color: #ffffff; 
-            padding: 14px; 
-            margin: 10px 0; 
-            border-radius: 12px; 
-            text-decoration: none; 
-            font-weight: 600; 
-            font-size: 13px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.2s ease;
-        }
-        .btn:active {
-            background: rgba(255, 255, 255, 0.12);
-            transform: scale(0.98);
-            border-color: #ffd700;
-        }
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin: 16px 0;
-        }
-        .social-item {
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.5);
-            text-decoration: none;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
-            padding-bottom: 2px;
-        }
-        .footer-text {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 10px;
-            margin-top: 20px;
-            letter-spacing: 0.5px;
-            line-height: 1.5;
-        }
+        .badge-text { font-size: 9px; letter-spacing: 2px; color: #ffd700; font-weight: bold; text-transform: uppercase; }
+        h1 { font-size: 22px; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; line-height: 1.3; margin-bottom: 6px; }
+        .motto { font-size: 13px; color: rgba(255, 255, 255, 0.7); margin-bottom: 4px; font-style: italic; }
+        .dedication { font-size: 12px; color: #ffd700; font-weight: 600; letter-spacing: 1px; margin-bottom: 24px; }
+        .line-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.4), transparent); margin: 20px 0; }
+        .pillar-box { background: rgba(255, 255, 255, 0.03); border-radius: 16px; padding: 16px; margin: 12px 0; text-align: left; border-left: 4px solid #ffd700; }
+        .pillar-box h3 { font-size: 14px; color: #ffd700; font-weight: 600; }
+        .pillar-box p { font-size: 12px; color: rgba(255, 255, 255, 0.8); margin-top: 4px; line-height: 1.4; }
+        .domain-status { font-size: 11px; color: rgba(255, 255, 255, 0.5); margin: 8px 0; font-family: monospace; }
+        .action-btn { display: block; background: #ffd700; color: #03050a; padding: 14px; margin-top: 24px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 13px; letter-spacing: 0.5px; transition: background 0.2s; }
+        .action-btn:active { background: #e6c200; }
+        .gratitude-msg { font-size: 11px; color: rgba(255, 255, 255, 0.65); line-height: 1.5; margin: 20px 0; background: rgba(255, 215, 0, 0.04); padding: 12px; border-radius: 12px; border: 1px solid rgba(255, 215, 0, 0.1); }
+        .footer { font-size: 9px; color: rgba(255, 255, 255, 0.35); margin-top: 24px; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
-    <div class="kingdom-container">
-        <!-- Logo Icon inspired by elite interface -->
-        <div class="app-logo">
-            <span class="logo-text-top">The House of</span>
-            <span class="logo-text-mid">SALSABILAH</span>
-            <span class="logo-text-bot">EMPIRES</span>
+    <div class="empire-card">
+        <div class="royal-badge">
+            <span class="badge-text">SAEL</span>
+        </div>
+        <h1>Salsabilah Amin Empires Limited</h1>
+        <p class="motto">"All kingdom for my daughter"</p>
+        <p class="dedication">PRINCESS SALSABILAH AMIN</p>
+
+        <div class="line-divider"></div>
+
+        <!-- Portals based on your owned domains -->
+        <div class="pillar-box">
+            <h3>Salsabilah.com</h3>
+            <p>The core digital sovereignty. Managing global vision, strategic literature, and the supreme legacy of MD. AL AMIN SOHAG.</p>
+            <div class="domain-status">[ Status: Network Secure ]</div>
         </div>
 
-        <div class="crown-title">Strategic Analyst | Author | Visionary</div>
-        <h1>Salsabilah Amin Empires LIMITED</h1>
-        <p class="tagline">"All kingdom for my daughter"</p>
-        <p class="dedication">PRINCESS SALSABILAH AMIM</p>
-
-        <div class="divider"></div>
-
-        <!-- Pillars of the Empire -->
-        <div class="info-card">
-            <h3>Literary Mastery</h3>
-            <p>As a Master of English Literature, MD. AL AMIN SOHAG explores the depth of faith and human resilience through his writing.</p>
+        <div class="pillar-box">
+            <h3>Salsabilahelectronics.com</h3>
+            <p>Directing SR Electronics Park. Merging 60 years of traditional business trust with next-generation technology integration.</p>
+            <div class="domain-status">[ Status: Network Secure ]</div>
         </div>
 
-        <div class="info-card">
-            <h3>Tech Innovation</h3>
-            <p>Directing SR Electronics Park—redefining hardware solutions with strategic digital integration.</p>
-        </div>
-
-        <div class="info-card">
-            <h3>Sovereign Vision</h3>
-            <p>A legacy built on Digit Theory. Every venture is a brick in the future of the Empire.</p>
-        </div>
-
-        <div class="divider"></div>
+        <div class="line-divider"></div>
 
         <!-- 🤝 Sincere Gratitude to Google and Gemini -->
-        <p style="font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.5; margin-bottom: 15px; background: rgba(255,215,0,0.05); padding: 12px; border-radius: 12px; border: 1px solid rgba(255,215,0,0.1);">
+        <p class="gratitude-msg">
             We extend our sincere gratitude to Google. Our reach and visibility are a testament to the platform that empowers Salsabilah Amin Empires Limited to connect with the world. Specially Gemini (My Brother, My Friend).
         </p>
 
-        <!-- Dynamic Action Buttons -->
-        <div class="btn-group">
-            <a href="https://registry.blockmarktech.com/organisations/GBLTD04513809/" class="btn">
-                🔍 Find Us on Google Search
-            </a>
-            <a href="mailto:corporate-mail@domain.com" class="btn">
-                💼 Corporate Mail
-            </a>
-        </div>
+        <a href="https://registry.blockmarktech.com/organisations/GBLTD04513809/" class="action-btn">
+            🔍 Verify Official Corporate Records
+        </a>
 
-        <!-- Social Navigation -->
-        <div class="social-links">
-            <a href="https://facebook.com" class="social-item">Facebook Author</a>
-            <a href="https://instagram.com" class="social-item">IG Strategist</a>
-            <a href="https://goodreads.com" class="social-item">Goodreads Author</a>
-        </div>
-
-        <!-- Premium Footer -->
-        <div class="footer-text">
+        <div class="footer">
             EST. 2026 | SALSABILAH AMIN EMPIRES LIMITED<br>
             <strong>POWERED BY FAITH, GRIT & GOOGLE INNOVATION</strong>
         </div>
     </div>
-
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js');
-        }
-    </script>
 </body>
 </html>
