@@ -50,21 +50,25 @@
         .pillar-box p { font-size: 12px; color: rgba(255, 255, 255, 0.8); margin-top: 4px; line-height: 1.4; }
         .domain-status { font-size: 11px; color: rgba(255, 255, 255, 0.5); margin: 8px 0; font-family: monospace; }
         
-        /* Premium Business Connect Styles */
+        /* Business Hub Styles */
         .boost-card {
-            background: linear-gradient(135deg, #128c7e 0%, #075e54 100%);
-            border-radius: 16px;
-            padding: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 20px 16px;
             margin: 15px 0;
             text-align: center;
-            box-shadow: 0 8px 20px rgba(18, 140, 126, 0.2);
             border: 1px solid rgba(255, 215, 0, 0.2);
         }
-        .boost-card h4 { font-size: 14px; color: #ffffff; font-weight: bold; margin-bottom: 5px; }
-        .boost-card p { font-size: 11px; color: rgba(255, 255, 255, 0.9); margin-bottom: 12px; }
+        .boost-card h4 { font-size: 15px; color: #ffd700; font-weight: bold; margin-bottom: 6px; }
+        .boost-card p { font-size: 12px; color: rgba(255, 255, 255, 0.8); margin-bottom: 16px; line-height: 1.4; }
         
         .action-btn { display: block; background: #ffd700; color: #03050a; padding: 14px; margin-top: 24px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 13px; letter-spacing: 0.5px; }
-        .wa-btn { display: inline-block; background: #ffffff; color: #075e54; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 12px; width: 100%; box-sizing: border-box; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        
+        /* Connected Buttons */
+        .hub-btn { display: block; width: 100%; padding: 12px; margin: 8px 0; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 12px; text-align: center; transition: transform 0.2s; }
+        .hub-btn:active { transform: scale(0.98); }
+        .btn-wa { background: #25D366; color: #ffffff; }
+        .btn-fb { background: #1877F2; color: #ffffff; }
         
         .gratitude-msg { font-size: 11px; color: rgba(255, 255, 255, 0.65); line-height: 1.5; margin: 20px 0; background: rgba(255, 215, 0, 0.04); padding: 12px; border-radius: 12px; border: 1px solid rgba(255, 215, 0, 0.1); }
         .footer { font-size: 9px; color: rgba(255, 255, 255, 0.35); margin-top: 24px; letter-spacing: 0.5px; }
@@ -81,11 +85,13 @@
 
         <div class="line-divider"></div>
 
-        <!-- 🚀 SR Electronics Park WhatsApp Smart Connect -->
+        <!-- 🚀 SR Electronics Park Smart Business Hub -->
         <div class="boost-card">
             <h4>⚡ SR Electronics Park</h4>
-            <p>আপনার পছন্দের ইলেকট্রনিক্স পণ্য ও সার্ভিসের নির্ভরযোগ্য প্রতিষ্ঠান। সরাসরি অর্ডার বা তথ্যের জন্য আমাদের হোয়াটসঅ্যাপ করুন।</p>
-            <a href="https://wa.me/8801911995940" class="wa-btn" target="_blank">🟢 সরাসরি WhatsApp-এ মেসেজ করুন</a>
+            <p>আপনার পছন্দের ইলেকট্রনিক্স পণ্য ও সার্ভিসের নির্ভরযোগ্য প্রতিষ্ঠান। সরাসরি যোগাযোগ ও অফার দেখতে নিচের বাটনগুলো ব্যবহার করুন।</p>
+            
+            <a href="https://wa.me/8801911995940" class="hub-btn btn-wa" target="_blank">🟢 সরাসরি WhatsApp-এ মেসেজ করুন</a>
+            <a href="https://facebook.com/srelectronicspark" class="hub-btn btn-fb" target="_blank">🔵 আমাদের ফেসবুক পেজ ভিজিট করুন</a>
         </div>
 
         <!-- Portals based on your owned domains -->
