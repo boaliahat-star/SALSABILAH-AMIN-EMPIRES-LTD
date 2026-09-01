@@ -1,110 +1,69 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
+const fs = require('fs');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware Setup
-app.use(express.json());
+// Middleware
 app.use(cors());
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Empire Root & System Status Endpoint
+// ডেটা সংরক্ষণের জন্য লোকাল JSON ফাইল বা ডেটাবেজ পাথ
+const DATA_DIR = path.join(__dirname, 'data');
+if (!fs.existsSync(DATA_DIR)){
+    fs.mkdirSync(DATA_DIR);
+}
+
+// ১. সার্ভার স্ট্যাটাস চেক করার রুট
 app.get('/', (req, res) => {
-    res.status(200).json({
-        empire: "Salsabilah Amin Empires Limited",
-        project: "SR Electronics Park API",
-        status: "Active & Secure",
-        version: "1.0.0"
+    res.json({ 
+        status: 'success', 
+        message: 'Salsabilah Amin Empires & SR Electronics Park POS Backend is running!' 
     });
 });
 
-// Products Endpoints
+// ২. পণ্যের তালিকা পাওয়ার রুট (Products API)
 app.get('/api/products', (req, res) => {
-    res.status(200).json({ 
-        success: true, 
-        message: 'Retrieved all product records successfully' 
-    });
+    const filePath = path.join(DATA_DIR, 'products.json');
+    if (fs.existsSync(filePath)) {
+        const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+        res.json(data);
+    } else {
+        res.json([]);
+    }
 });
 
+// ৩. নতুন পণ্য যোগ করার রুট
 app.post('/api/products', (req, res) => {
-    const productData = req.body;
-    res.status(201).json({ 
-        success: true, 
-        message: 'New product created successfully', 
-        data: productData 
-    });
+    const filePath = path.join(DATA_DIR, 'products.json');
+    let products = [];
+    if (fs.existsSync(filePath)) {
+        products = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    }
+    const newProduct = { id: Date.now(), ...req.body };
+    products.push(newProduct);
+    fs.writeFileSync(filePath, JSON.stringify(products, null, 2));
+    res.json({ status: 'success', message: 'Product added successfully', product: newProduct });
 });
 
-// Inventory Endpoints
-app.get('/api/inventory', (req, res) => {
-    res.status(200).json({ 
-        success: true, 
-        message: 'Retrieved current inventory details successfully' 
-    });
-});
-
-// Customers Endpoints
-app.get('/api/customers', (req, res) => {
-    res.status(200).json({ 
-        success: true, 
-        message: 'Retrieved all customer profiles successfully' 
-    });
-});
-
-app.post('/api/customers', (req, res) => {
-    const customerData = req.body;
-    res.status(201).json({ 
-        success: true, 
-        message: 'New customer profile created successfully', 
-        data: customerData 
-    });
-});
-
-// Sales Endpoints
-app.get('/api/sales', (req, res) => {
-    res.status(200).json({ 
-        success: true, 
-        message: 'Retrieved sales records successfully' 
-    });
-});
-
+// ৪. নতুন সেল বা বিক্রি রেকর্ড করার রুট (Sales API)
 app.post('/api/sales', (req, res) => {
-    const saleData = req.body;
-    res.status(201).json({ 
-        success: true, 
-        message: 'New sale recorded successfully', 
-        data: saleData 
-    });
+    const filePath = path.join(DATA_DIR, 'sales.json');
+    let sales = [];
+    if (fs.existsSync(filePath)) {
+        sales = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    }
+    const saleRecord = { id: Date.now(), date: new Date(), ...req.body };
+    sales.push(saleRecord);
+    fs.writeFileSync(filePath, JSON.stringify(sales, null, 2));
+    res.json({ status: 'success', message: 'Sale recorded successfully', sale: saleRecord });
 });
 
-// Payments Endpoint
-app.post('/api/payments', (req, res) => {
-    const paymentData = req.body;
-    res.status(200).json({ 
-        success: true, 
-        message: 'Payment processed successfully', 
-        data: paymentData 
-    });
-});
-
-// Reports Endpoint
-app.get('/api/reports', (req, res) => {
-    res.status(200).json({ 
-        success: true, 
-        message: 'Reports generated successfully' 
-    });
-});
-
-// Global Error Handling Middleware
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).json({ 
-        success: false, 
-        error: 'Internal Empire Server Error' 
-    });
-});
-
-// Server Initialization
+// সার্ভার স্টার্ট
 app.listen(PORT, () => {
-    console.log(`Salsabilah Empire Server is running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
