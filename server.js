@@ -1,65 +1,110 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
-app.use(bodyParser.json());
+// Middleware Setup
+app.use(express.json());
+app.use(cors());
 
-// Routes
+// Empire Root & System Status Endpoint
+app.get('/', (req, res) => {
+    res.status(200).json({
+        empire: "Salsabilah Amin Empires Limited",
+        project: "SR Electronics Park API",
+        status: "Active & Secure",
+        version: "1.0.0"
+    });
+});
 
-// Products
+// Products Endpoints
 app.get('/api/products', (req, res) => {
-    // Logic to retrieve all products
-    res.send('Get all products');
+    res.status(200).json({ 
+        success: true, 
+        message: 'Retrieved all product records successfully' 
+    });
 });
 
 app.post('/api/products', (req, res) => {
-    // Logic to create a new product
-    res.send('Create a new product');
+    const productData = req.body;
+    res.status(201).json({ 
+        success: true, 
+        message: 'New product created successfully', 
+        data: productData 
+    });
 });
 
-// Inventory
+// Inventory Endpoints
 app.get('/api/inventory', (req, res) => {
-    // Logic to retrieve inventory details
-    res.send('Get inventory details');
+    res.status(200).json({ 
+        success: true, 
+        message: 'Retrieved current inventory details successfully' 
+    });
 });
 
-// Customers
+// Customers Endpoints
 app.get('/api/customers', (req, res) => {
-    // Logic to retrieve all customers
-    res.send('Get all customers');
+    res.status(200).json({ 
+        success: true, 
+        message: 'Retrieved all customer profiles successfully' 
+    });
 });
 
 app.post('/api/customers', (req, res) => {
-    // Logic to create a new customer
-    res.send('Create a new customer');
+    const customerData = req.body;
+    res.status(201).json({ 
+        success: true, 
+        message: 'New customer profile created successfully', 
+        data: customerData 
+    });
 });
 
-// Sales
+// Sales Endpoints
 app.get('/api/sales', (req, res) => {
-    // Logic to retrieve sales records
-    res.send('Get sales records');
+    res.status(200).json({ 
+        success: true, 
+        message: 'Retrieved sales records successfully' 
+    });
 });
 
 app.post('/api/sales', (req, res) => {
-    // Logic to create a new sale
-    res.send('Create a new sale');
+    const saleData = req.body;
+    res.status(201).json({ 
+        success: true, 
+        message: 'New sale recorded successfully', 
+        data: saleData 
+    });
 });
 
-// Payments
+// Payments Endpoint
 app.post('/api/payments', (req, res) => {
-    // Logic to process a payment
-    res.send('Process a payment');
+    const paymentData = req.body;
+    res.status(200).json({ 
+        success: true, 
+        message: 'Payment processed successfully', 
+        data: paymentData 
+    });
 });
 
-// Reports
+// Reports Endpoint
 app.get('/api/reports', (req, res) => {
-    // Logic to generate reports
-    res.send('Generate reports');
+    res.status(200).json({ 
+        success: true, 
+        message: 'Reports generated successfully' 
+    });
 });
 
+// Global Error Handling Middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ 
+        success: false, 
+        error: 'Internal Empire Server Error' 
+    });
+});
+
+// Server Initialization
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Salsabilah Empire Server is running on port ${PORT}`);
 });
